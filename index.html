@@ -47,7 +47,33 @@
 
 <title>월포스(주)</title>
 
-
+<meta charset="utf-8">
+<input type="text" id="str">
+<input type="button" value="찾기" onclick="findStr()">
+<div>
+This feature is non-standard and is not on a standards track. Do not use it on production sites facing the Web: it will not work for every user. There may also be large incompatibilities between implementations and the behavior may change in the future.
+</div>
+<script type="text/javascript">
+function findStr() {
+    var n = 0;
+    var str = document.getElementById("str").value;
+    if(navigator.userAgent.indexOf("rv:11") > -1) {
+        var f, contents = document.body.createTextRange();
+        for(var i = 0; i <= n && (f = contents.findText(str)) != false; i++) {
+            contents.moveStart('character');
+            contents.moveEnd('textedit');
+        }
+        if(f) {
+            contents.moveStart('character', -1);
+            contents.findText(str);
+            contents.select();
+            n++;
+        }
+    } else {
+        window.find(str);
+    }
+}
+</script>
   
 
 
